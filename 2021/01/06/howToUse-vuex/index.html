@@ -8,15 +8,15 @@
   <link rel="dns-prefetch" href="http://example.com">
   <title>Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="VueX（Vue状态管理模式）一、初试VueX1.1关于VueX">
+  <meta name="description" content="VueX（Vue状态管理模式）一、初试VueX1.1关于VueX​        VueX是适用于在Vue项目开发时使用的状态管理工具。试想一下，如果在一个项目开发中频繁的使用组件传参的方式来同步data中的值，一旦项目变得很庞大，管理和维护这些值将是相当棘手的工作。为此，Vue为这些被多个组件频繁使用的值提供了一个统一管理的工具——VueX。在具有VueX的Vue项目中，我们只需要把这些值定义在">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Hexo">
 <meta property="og:url" content="http://example.com/2021/01/06/howToUse-vuex/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="VueX（Vue状态管理模式）一、初试VueX1.1关于VueX">
+<meta property="og:description" content="VueX（Vue状态管理模式）一、初试VueX1.1关于VueX​        VueX是适用于在Vue项目开发时使用的状态管理工具。试想一下，如果在一个项目开发中频繁的使用组件传参的方式来同步data中的值，一旦项目变得很庞大，管理和维护这些值将是相当棘手的工作。为此，Vue为这些被多个组件频繁使用的值提供了一个统一管理的工具——VueX。在具有VueX的Vue项目中，我们只需要把这些值定义在">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2021-01-06T09:45:27.977Z">
-<meta property="article:modified_time" content="2021-01-06T07:54:22.976Z">
+<meta property="article:modified_time" content="2021-01-06T09:48:43.735Z">
 <meta property="article:author" content="John Doe">
 <meta name="twitter:card" content="summary">
   
@@ -159,7 +159,111 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="VueX（Vue状态管理模式）"><a href="#VueX（Vue状态管理模式）" class="headerlink" title="VueX（Vue状态管理模式）"></a>VueX（Vue状态管理模式）</h1><h2 id="一、初试VueX"><a href="#一、初试VueX" class="headerlink" title="一、初试VueX"></a>一、初试VueX</h2><h3 id="1-1关于VueX"><a href="#1-1关于VueX" class="headerlink" title="1.1关于VueX"></a>1.1关于VueX</h3>
+        <h1 id="VueX（Vue状态管理模式）"><a href="#VueX（Vue状态管理模式）" class="headerlink" title="VueX（Vue状态管理模式）"></a>VueX（Vue状态管理模式）</h1><h2 id="一、初试VueX"><a href="#一、初试VueX" class="headerlink" title="一、初试VueX"></a>一、初试VueX</h2><h3 id="1-1关于VueX"><a href="#1-1关于VueX" class="headerlink" title="1.1关于VueX"></a>1.1关于VueX</h3><p>​        <code>VueX</code>是适用于在<code>Vue</code>项目开发时使用的状态管理工具。试想一下，如果在一个项目开发中频繁的使用组件传参的方式来同步<code>data</code>中的值，一旦项目变得很庞大，管理和维护这些值将是相当棘手的工作。为此，<code>Vue</code>为这些被多个组件频繁使用的值提供了一个统一管理的工具——<code>VueX</code>。在具有<code>VueX</code>的<code>Vue</code>项目中，我们只需要把这些值定义在<code>VueX</code>中，即可在整个<code>Vue</code>项目的组件中使用。</p>
+<h3 id="1-2安装"><a href="#1-2安装" class="headerlink" title="1.2安装"></a>1.2安装</h3><p>由于<code>VueX</code>是在学习<code>VueCli</code>后进行的，所以在下文出现的项目的目录请参照<code>VueCli 2.x</code>构建的目录。</p>
+<p>以下步骤的前提是你已经完成了<code>Vue</code>项目构建，并且已转至该项目的文件目录下。</p>
+<ul>
+<li><p><code>npm</code>安装<code>VueX</code></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm i vuex -s</span><br></pre></td></tr></table></figure>
+
+
+</li>
+</ul>
+<ul>
+<li><p>在项目的根目录下新增一个<code>store</code>文件夹，在该文件夹内创建<code>index.js</code></p>
+<p>此时你的项目的<code>src</code>文件夹应当是这样的</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">│  App.vue</span><br><span class="line">│  main.js</span><br><span class="line">│</span><br><span class="line">├─assets</span><br><span class="line">│      logo.png</span><br><span class="line">│</span><br><span class="line">├─components</span><br><span class="line">│      HelloWorld.vue</span><br><span class="line">│</span><br><span class="line">├─router</span><br><span class="line">│      index.js</span><br><span class="line">│</span><br><span class="line">└─store</span><br><span class="line">       index.js</span><br></pre></td></tr></table></figure>
+
+
+</li>
+</ul>
+<h3 id="1-3使用"><a href="#1-3使用" class="headerlink" title="1.3使用"></a>1.3使用</h3><h4 id="1-3-1-初始化store下index-js中的内容"><a href="#1-3-1-初始化store下index-js中的内容" class="headerlink" title="1.3.1 初始化store下index.js中的内容"></a>1.3.1 初始化<code>store</code>下<code>index.js</code>中的内容</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> Vue <span class="keyword">from</span> <span class="string">&#x27;vue&#x27;</span></span><br><span class="line"><span class="keyword">import</span> Vuex <span class="keyword">from</span> <span class="string">&#x27;vuex&#x27;</span></span><br><span class="line"><span class="comment">//挂载Vuex</span></span><br><span class="line">Vue.use(Vuex)</span><br><span class="line"><span class="comment">//创建VueX对象</span></span><br><span class="line"><span class="keyword">const</span> store = <span class="keyword">new</span> Vuex.Store(&#123;</span><br><span class="line">    state:&#123;</span><br><span class="line">        <span class="comment">//存放的键值对就是所要管理的状态</span></span><br><span class="line">        name:<span class="string">&#x27;helloVueX&#x27;</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> store</span><br></pre></td></tr></table></figure>
+<h4 id="1-3-2将store挂载到当前项目的Vue实例中去"><a href="#1-3-2将store挂载到当前项目的Vue实例中去" class="headerlink" title="1.3.2将store挂载到当前项目的Vue实例中去"></a>1.3.2将<code>store</code>挂载到当前项目的<code>Vue</code>实例中去</h4><p>打开<code>main.js</code></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> Vue <span class="keyword">from</span> <span class="string">&#x27;vue&#x27;</span></span><br><span class="line"><span class="keyword">import</span> App <span class="keyword">from</span> <span class="string">&#x27;./App&#x27;</span></span><br><span class="line"><span class="keyword">import</span> router <span class="keyword">from</span> <span class="string">&#x27;./router&#x27;</span></span><br><span class="line"><span class="keyword">import</span> store <span class="keyword">from</span> <span class="string">&#x27;./store&#x27;</span></span><br><span class="line">Vue.config.productionTip = <span class="literal">false</span></span><br><span class="line"><span class="comment">/* eslint-disable no-new */</span></span><br><span class="line"><span class="keyword">new</span> Vue(&#123;</span><br><span class="line">  el: <span class="string">&#x27;#app&#x27;</span>,</span><br><span class="line">  router,</span><br><span class="line">  store,  <span class="comment">//store:store 和router一样，将我们创建的Vuex实例挂载到这个vue实例中</span></span><br><span class="line">  render: <span class="function"><span class="params">h</span> =&gt;</span> h(App)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<h4 id="1-3-3-在组件中使用Vuex"><a href="#1-3-3-在组件中使用Vuex" class="headerlink" title="1.3.3 在组件中使用Vuex"></a>1.3.3 在组件中使用<code>Vuex</code></h4><p>例如在<code>App.vue</code>中，我们要将<code>state</code>中定义的<code>name</code>拿来在<code>h1</code>标签中显示</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">    &lt;div id=<span class="string">&#x27;app&#x27;</span>&gt;</span><br><span class="line">        name:</span><br><span class="line">        &lt;h1&gt;&#123;&#123; $store.state.name &#125;&#125;&lt;/h1&gt;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">&lt;/template&gt;</span><br></pre></td></tr></table></figure>
+<p>或者要在组件方法中使用</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">...,</span><br><span class="line">methods:&#123;</span><br><span class="line">    <span class="function"><span class="title">add</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">      <span class="built_in">console</span>.log(<span class="built_in">this</span>.$store.state.name)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;,</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
+<p><strong>注意，请不要在此处更改<code>state</code>中的状态的值，后文中将会说明</strong></p>
+<h4 id="1-4-安装Vue开发工具VueDevtools"><a href="#1-4-安装Vue开发工具VueDevtools" class="headerlink" title="1.4 安装Vue开发工具VueDevtools"></a>1.4 安装<code>Vue</code>开发工具<code>VueDevtools</code></h4><p>在<code>Vue</code>项目开发中，需要监控项目中得各种值，为了提高效率，<code>Vue</code>提供了一款浏览器扩展——<code>VueDevtools</code>。</p>
+<p>在学习<code>VueX</code>时，更为需要使用该插件。关于该插件的使用可以移步官网，在此不再赘叙。</p>
+<h3 id="二、VueX中的核心内容"><a href="#二、VueX中的核心内容" class="headerlink" title="二、VueX中的核心内容"></a>二、VueX中的核心内容</h3><p>在<code>VueX</code>对象中，其实不止有<code>state</code>,还有用来操作<code>state</code>中数据的方法集，以及当我们需要对<code>state</code>中的数据需要加工的方法集等等成员。</p>
+<p>成员列表：</p>
+<ul>
+<li>state 用于存放需要全局调用的状态</li>
+<li>mutations 用于同步修改（注意是同步不能做异步修改如写Ajax请求）state中字段</li>
+<li>getters 用于将state中定义的字段进行重组和加工给外界访问</li>
+<li>Actions 用户异步修改state中字段，注意不能直接访问state,通过提交mutation中方法执行修改</li>
+<li>modules 模块化状态管理</li>
+</ul>
+<h4 id="2-1-VueX的工作流程"><a href="#2-1-VueX的工作流程" class="headerlink" title="2.1 VueX的工作流程"></a>2.1 <code>VueX</code>的工作流程</h4><p>首先，<code>Vue</code>组件如果调用某个<code>VueX</code>的方法过程中需要向后端请求时或者说出现异步操作时，需要<code>dispatch</code> <code>VueX</code>中<code>actions</code>的方法，以保证数据的同步。可以说，<code>action</code>的存在就是为了让<code>mutations</code>中的方法能在异步操作中起作用。</p>
+<p>如果没有异步操作，那么我们就可以直接在组件内提交状态中的<code>Mutations</code>中自己编写的方法来达成对<code>state</code>成员的操作。注意，<code>1.3.3节</code>中有提到，不建议在组件中直接对<code>state</code>中的成员进行操作，这是因为直接修改(例如：<code>this.$store.state.name = &#39;hello&#39;</code>)的话不能被<code>VueDevtools</code>所监控到。</p>
+<p>最后被修改后的state成员会被渲染到组件的原位置当中去。</p>
+<h4 id="2-2-Mutations"><a href="#2-2-Mutations" class="headerlink" title="2.2 Mutations"></a>2.2 Mutations</h4><p><code>mutations</code>是操作<code>state</code>数据的方法的集合，比如对该数据的修改、增加、删除等等。</p>
+<h5 id="2-2-1-Mutations使用方法"><a href="#2-2-1-Mutations使用方法" class="headerlink" title="2.2.1 Mutations使用方法"></a>2.2.1 Mutations使用方法</h5><p><code>mutations</code>方法都有默认的形参：</p>
+<p>(<strong>[state]</strong> <strong>[,payload]</strong>)</p>
+<ul>
+<li><code>state</code> 是当前<code>vuex</code>对象中的<code>state</code></li>
+<li><code>playload</code> 是该方法在调用时传递参数时候使用的</li>
+</ul>
+<p>例如，我们编写一个方法，当被执行时，能把下例中的<code>name</code>值修改为<code>&quot;jack&quot;</code>,我们只需要这样做</p>
+<p><code>index.js</code>中</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> Vue <span class="keyword">from</span> <span class="string">&#x27;vue&#x27;</span></span><br><span class="line"><span class="keyword">import</span> Vuex <span class="keyword">from</span> <span class="string">&#x27;vuex&#x27;</span></span><br><span class="line">Vue.use(Vuex)</span><br><span class="line"><span class="keyword">const</span> store = <span class="keyword">new</span> Vuex.store(&#123;</span><br><span class="line">    state:&#123;</span><br><span class="line">        name:<span class="string">&#x27;helloVueX&#x27;</span></span><br><span class="line">    &#125;,</span><br><span class="line">    mutations:&#123;</span><br><span class="line">        <span class="comment">//es6语法，等同edit:funcion()&#123;...&#125;</span></span><br><span class="line">        <span class="function"><span class="title">edit</span>(<span class="params">state</span>)</span>&#123;</span><br><span class="line">            state.name = <span class="string">&#x27;jack&#x27;</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> store</span><br></pre></td></tr></table></figure>
+<p>而在组件中，我们需要这样去调用这个<code>mutation</code>——例如在App.vue的某个<code>method</code>中:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">this</span>.$store.commit(<span class="string">&#x27;edit&#x27;</span>)</span><br></pre></td></tr></table></figure>
+<h5 id="2-2-2-Mutation传值"><a href="#2-2-2-Mutation传值" class="headerlink" title="2.2.2 Mutation传值"></a>2.2.2 Mutation传值</h5><p>在实际生产过程中，会遇到需要在提交某个<code>mutation</code>时需要携带一些参数给方法使用。</p>
+<p>单个值提交时:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">this</span>.$store.commit(<span class="string">&#x27;edit&#x27;</span>,<span class="number">15</span>)</span><br></pre></td></tr></table></figure>
+<p>当需要多参提交时，推荐把他们放在一个对象中来提交:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">this</span>.$store.commit(<span class="string">&#x27;edit&#x27;</span>,&#123;<span class="attr">age</span>:<span class="number">15</span>,<span class="attr">sex</span>:<span class="string">&#x27;男&#x27;</span>&#125;)</span><br></pre></td></tr></table></figure>
+<p>接收挂载的参数：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="title">edit</span>(<span class="params">state,payload</span>)</span>&#123;</span><br><span class="line">	state.name = <span class="string">&#x27;jack&#x27;</span></span><br><span class="line">    <span class="built_in">console</span>.log(payload) <span class="comment">// 15或&#123;age:15,sex:&#x27;男&#x27;&#125;</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>另一种提交方式</strong></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">this</span>.$store.commit(&#123;</span><br><span class="line">    type:<span class="string">&#x27;edit&#x27;</span>,</span><br><span class="line">    payload:&#123;</span><br><span class="line">        age:<span class="number">15</span>,</span><br><span class="line">        sex:<span class="string">&#x27;男&#x27;</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<h5 id="2-2-3-增删state中的成员"><a href="#2-2-3-增删state中的成员" class="headerlink" title="2.2.3 增删state中的成员"></a>2.2.3 增删state中的成员</h5><p>为了配合<code>Vue</code>的响应式数据，我们在<code>Mutations</code>的方法中，应当使用<code>Vue</code>提供的方法来进行操作。如果使用<code>delete</code>或者<code>xx.xx = xx</code>的形式去删或增，则<code>Vue</code>不能对数据进行实时响应。</p>
+<ul>
+<li><p><code>Vue.set</code> 为某个对象设置成员的值，若不存在则新增</p>
+<p>例如对<code>state</code>对象中添加一个<code>age</code>成员</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Vue.set(state,<span class="string">&quot;age&quot;</span>,<span class="number">15</span>)</span><br></pre></td></tr></table></figure></li>
+<li><p><code>Vue.delete</code> 删除成员</p>
+<p>将刚刚添加的age成员删除</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Vue.delete(state,<span class="string">&#x27;age&#x27;</span>)</span><br></pre></td></tr></table></figure>
+<h4 id="2-3-Getters"><a href="#2-3-Getters" class="headerlink" title="2.3 Getters"></a>2.3 Getters</h4><p>可以对state中的成员加工后传递给外界</p>
+<p>Getters中的方法有两个默认参数</p>
+<ul>
+<li>state 当前VueX对象中的状态对象</li>
+<li>getters 当前getters对象，用于将getters下的其他getter拿来用</li>
+</ul>
+<p>组件中调用</p>
+</li>
+</ul>
+  <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">this</span>.$store.getters.fullInfo</span><br></pre></td></tr></table></figure>
+<h4 id="2-4-Actions"><a href="#2-4-Actions" class="headerlink" title="2.4 Actions"></a>2.4 Actions</h4><p>  由于直接在<code>mutation</code>方法中进行异步操作，将会引起数据失效。所以提供了Actions来专门进行异步操作，最终提交<code>mutation</code>方法。</p>
+<p>  <code>Actions</code>中的方法有两个默认参数</p>
+<ul>
+<li><p><code>context</code> 上下文(相当于箭头函数中的this)对象</p>
+</li>
+<li><p><code>payload</code> 挂载参数</p>
+<p>例如，我们在两秒中后执行<code>2.2.2</code>节中的<code>edit</code>方法</p>
+<p>由于<code>setTimeout</code>是异步操作，所以需要使用<code>actions</code></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">actions:&#123;</span><br><span class="line">    <span class="function"><span class="title">aEdit</span>(<span class="params">context,payload</span>)</span>&#123;</span><br><span class="line">        <span class="built_in">setTimeout</span>(<span class="function">()=&gt;</span>&#123;</span><br><span class="line">            context.commit(<span class="string">&#x27;edit&#x27;</span>,payload)</span><br><span class="line">        &#125;,<span class="number">2000</span>)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>在组件中调用:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">this</span>.$store.dispatch(<span class="string">&#x27;aEdit&#x27;</span>,&#123;<span class="attr">age</span>:<span class="number">15</span>&#125;)</span><br></pre></td></tr></table></figure></li>
+<li><p>*改进：**</p>
+<p>由于是异步操作，所以我们可以为我们的异步操作封装为一个<code>Promise</code>对象</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="title">aEdit</span>(<span class="params">context,payload</span>)</span>&#123;</span><br><span class="line">       <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve,reject</span>)=&gt;</span>&#123;</span><br><span class="line">           <span class="built_in">setTimeout</span>(<span class="function">()=&gt;</span>&#123;</span><br><span class="line">               context.commit(<span class="string">&#x27;edit&#x27;</span>,payload)</span><br><span class="line">               resolve()</span><br><span class="line">           &#125;,<span class="number">2000</span>)</span><br><span class="line">       &#125;)</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
+<h4 id="2-5-Models"><a href="#2-5-Models" class="headerlink" title="2.5 Models"></a>2.5 Models</h4><p>当项目庞大，状态非常多时，可以采用模块化管理模式。<code>Vuex</code> 允许我们将 store 分割成<strong>模块（module）</strong>。每个模块拥有自己的 <code>state、mutation、action、getter</code>、甚至是嵌套子模块——从上至下进行同样方式的分割。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">models:&#123;</span><br><span class="line">    a:&#123;</span><br><span class="line">        state:&#123;&#125;,</span><br><span class="line">        getters:&#123;&#125;,</span><br><span class="line">        ....</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>组件内调用模块a的状态：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">this</span>.$store.state.a</span><br></pre></td></tr></table></figure>
+<p>而提交或者<code>dispatch</code>某个方法和以前一样,会自动执行所有模块内的对应<code>type</code>的方法：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">this</span>.$store.commit(<span class="string">&#x27;editKey&#x27;</span>)</span><br><span class="line"><span class="built_in">this</span>.$store.dispatch(<span class="string">&#x27;aEditKey&#x27;</span>)</span><br></pre></td></tr></table></figure>
+<h3 id="三、规范目录结构"><a href="#三、规范目录结构" class="headerlink" title="三、规范目录结构"></a>三、规范目录结构</h3><p>如果把整个<code>store</code>都放在<code>index.js</code>中是不合理的，所以需要拆分。比较合适的目录格式如下：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">store:.</span><br><span class="line">│  actions.js</span><br><span class="line">│  getters.js</span><br><span class="line">│  index.js</span><br><span class="line">│  mutations.js</span><br><span class="line">│  mutations_type.js   ##该项为存放mutaions方法常量的文件，按需要可加入</span><br><span class="line">│</span><br><span class="line">└─modules</span><br><span class="line">        Astore.js</span><br></pre></td></tr></table></figure>
+<p>对应的内容存放在对应的文件中，和以前一样，在<code>index.js</code>中存放并导出<code>store</code>。<code>state</code>中的数据尽量放在<code>index.js</code>中。而<code>modules</code>中的<code>Astore</code>局部模块状态如果多的话也可以进行细分。</p>
+</li>
+</ul>
+
       
 
       
